@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import { PhoneIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
-  FormErrorMessage,
+  Heading,
   Input,
   InputGroup,
   InputLeftElement,
@@ -11,11 +10,16 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import Head from "next/head";
+import React, { useState } from "react";
 import style from "./Register.module.scss";
 
+/**
+ *This component is used to register users in the system.
+ * @author Du2Du
+ */
 const RegisterUser: React.FC = () => {
   const [show, setShow] = useState(false);
-  const handleClick = () => setShow(!show);
+  const hidePassword = () => setShow(!show);
 
   const onChange =
     (setValue: React.Dispatch<React.SetStateAction<string>>) =>
@@ -38,13 +42,22 @@ const RegisterUser: React.FC = () => {
       </Head>
       <Box
         className={style.boxRegister}
-        p="4"
+        p="6"
+        bg="#fff"
         borderRadius="lg"
         border="1px"
         borderColor="#34aee7"
         d="flex"
         flexDir={"column"}
       >
+        <Heading
+          fontFamily="Roboto"
+          textColor="#434546"
+          textAlign="center"
+          pb={4}
+        >
+          Register now to access the website
+        </Heading>
         <Stack d="flex" flexDir={"column"} bg="#fff" pb={4}>
           <Input
             type="text"
@@ -67,6 +80,7 @@ const RegisterUser: React.FC = () => {
               pr="4.5rem"
               type={show ? "text" : "password"}
               placeholder="Password"
+              size="lg"
               onChange={onChange(setPasswordValue)}
               value={passwordValue}
             />
@@ -74,7 +88,7 @@ const RegisterUser: React.FC = () => {
               <Button
                 h="1.75rem"
                 size="sm"
-                onClick={handleClick}
+                onClick={hidePassword}
                 textColor={"#34aee7"}
               >
                 {show ? "Hide" : "Show"}

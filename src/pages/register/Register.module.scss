@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 .registerBody {
+  background-image: url("../../images/wallpaperRegister.jpg");
+  background-repeat: repeat;
   height: 100vh !important;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.boxRegister {
+  width: 300px;
+}
 @media (min-width: 700px) {
   .boxRegister {
     width: 600px;
