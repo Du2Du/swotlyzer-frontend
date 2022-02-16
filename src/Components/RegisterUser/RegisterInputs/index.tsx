@@ -8,7 +8,7 @@ import {
   InputLeftElement,
   InputRightElement,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { CustomButton } from "../../Helpers";
 
@@ -18,7 +18,12 @@ type Inputs = {
   password: string;
   phone: string;
 };
-
+/**
+ * This component renders the inputs and button to register the user.
+ *
+ * @param paddingYItems This parameter stores the number that will be used in the paddingY of the items of this component.
+ * @author Du2Du
+ */
 export const RegisterInputs: React.FC<{ paddingYItems?: number | string }> = ({
   paddingYItems,
 }) => {
@@ -34,8 +39,6 @@ export const RegisterInputs: React.FC<{ paddingYItems?: number | string }> = ({
   const spanStyle = {
     color: "#d22d2d",
   };
-
-  const validatePassword = getValues("password").length;
 
   const [show, setShow] = useState(false);
   const hidePassword = () => setShow(!show);
@@ -71,7 +74,7 @@ export const RegisterInputs: React.FC<{ paddingYItems?: number | string }> = ({
           <FormLabel htmlFor="password">Password</FormLabel>
           <InputGroup size="md">
             <Input
-              {...register("password", { required: true })}
+              {...register("password", { required: true, minLength: 6 })}
               pr="4.5rem"
               type={show ? "text" : "password"}
               placeholder="Password"
@@ -94,7 +97,7 @@ export const RegisterInputs: React.FC<{ paddingYItems?: number | string }> = ({
               </Button>
             </InputRightElement>
           </InputGroup>
-          {validatePassword < 6 && (
+          {errors.password && (
             <span style={spanStyle}>
               Password field needs more than 6 characters!
             </span>
