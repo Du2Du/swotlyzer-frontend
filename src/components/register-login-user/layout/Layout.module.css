@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .registerBody {
-  background-image: url("../../images/wallpaperRegister.jpg");
+  background-image: url("../../../images/wallpaperRegister.jpg");
   background-repeat: repeat;
   height: 100vh !important;
   display: flex;
