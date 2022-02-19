@@ -1,11 +1,8 @@
 import axios from "axios";
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 
 const baseURL = "https://swotlyzer.herokuapp.com/api";
-const fetcher = (url: string) =>
-  Backend.get(url).then((res) => {
-    res.data;
-  });
+const fetcher = (url: string) => Backend.get(url).then((res) => res.data);
 
 export const Backend = axios.create({
   withCredentials: true,

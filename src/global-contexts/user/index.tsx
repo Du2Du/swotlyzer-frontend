@@ -1,15 +1,10 @@
 import React, {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useContext,
-  useState,
+  createContext, useCallback,
+  useContext
 } from "react";
 import { ApiUrls } from "../../ApiRoutes";
 import {
-  AxiosBaseResponse,
-  UserInterface,
+  UserInterface
 } from "../../global-interface/user-interface";
 import { useGet } from "../../services/api";
 
