@@ -55,9 +55,9 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
   const [show, setShow] = useState(false);
   const hidePassword = () => setShow(!show);
 
-  const submitRegister = (data: Inputs) => {
+  const submitRegister = (dataInputs: Inputs) => {
     const apiRoute = isRegister ? ApiUrls.REGISTER_USER : ApiUrls.LOGIN_USER;
-    Backend.post(apiRoute, data)
+    Backend.post(apiRoute, dataInputs)
       .then(() => {
         if (isRegister) {
           toast.success("Successful Registration");

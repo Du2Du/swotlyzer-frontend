@@ -23,9 +23,10 @@ const UserContext = createContext<UserContextInterface>(
 );
 
 export const UserProvider: React.FC = ({ children }) => {
-  const { data } = useGet(ApiUrls.USER);
+  const { data, mutate } = useGet(ApiUrls.USER);
   const getUser = useCallback(() => {
-    return data;
+    //porra maluco, dps eu vejo sa porra, vou ver filme
+    return mutate();
   }, [data]);
 
   return (
