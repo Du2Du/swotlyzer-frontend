@@ -8,6 +8,7 @@ import {
   InputLeftElement,
   InputRightElement,
 } from "@chakra-ui/react";
+import Router from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -61,6 +62,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
       .then(() => {
         if (isRegister) {
           toast.success("Successful Registration");
+          Router.push("/login");
         } else {
           toast.success("Successful Login");
           getUser();

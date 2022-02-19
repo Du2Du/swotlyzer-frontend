@@ -14,7 +14,7 @@ import {
 import { useGet } from "../../services/api";
 
 interface UserContextInterface {
-  data: undefined | void;
+  data: UserInterface | void;
   getUser: () => void;
 }
 
@@ -23,9 +23,8 @@ const UserContext = createContext<UserContextInterface>(
 );
 
 export const UserProvider: React.FC = ({ children }) => {
-  const { data, mutate } = useGet(ApiUrls.USER);
+  const { data, mutate } = useGet<UserInterface>(ApiUrls.USER);
   const getUser = useCallback(() => {
-    //porra maluco, dps eu vejo sa porra, vou ver filme
     return mutate();
   }, [data]);
 

@@ -12,7 +12,10 @@ export const Backend = axios.create({
   baseURL,
 });
 
-export const useGet = (url: string) => {
-  const { data, error, mutate, isValidating } = useSWR(baseURL + url, fetcher);
+export const useGet = <T>(url: string) => {
+  const { data, error, mutate, isValidating } = useSWR<T>(
+    baseURL + url,
+    fetcher
+  );
   return { data, error, mutate, isValidating };
 };
