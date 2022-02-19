@@ -18,3 +18,12 @@
     width: 600px;
   }
 }
+.loginButton {
+  color: #494949;
+  font-size: 22px;
+  text-align: center;
+  justify-content: center;
+}
+.loginButton a {
+  color: #34aee7;
+}

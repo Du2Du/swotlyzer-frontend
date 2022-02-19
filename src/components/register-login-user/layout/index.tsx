@@ -1,5 +1,6 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 import { RegisterInputs } from "../register-inputs";
 import style from "./Layout.module.css";
@@ -37,6 +38,17 @@ export const LayoutCredentials: React.FC<{ isRegister: boolean }> = ({
           {titleName} now to access the website
         </Heading>
         <RegisterInputs paddingYItems={2} isRegister={isRegister} />
+        {isRegister && (
+          <Box
+            borderTop="1px"
+            marginTop="5"
+            paddingTop="4"
+            borderColor="#b1b1b1"
+            className={style.loginButton}
+          >
+            Already have a registration? <Link href="/login">Login</Link>
+          </Box>
+        )}
       </Box>
     </Box>
   );
