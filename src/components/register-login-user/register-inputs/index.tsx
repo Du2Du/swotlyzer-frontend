@@ -45,7 +45,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
     register,
     formState: { errors },
   } = useForm<Inputs>();
-  const { getUser } = useUserContext();
+  const { getUser, data } = useUserContext();
 
   const spanStyle = {
     color: "#d22d2d",
