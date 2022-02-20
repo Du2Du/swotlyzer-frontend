@@ -1,2 +1,2 @@
-export { CustomButton } from "./button";
+export { CustomButton } from "./Button";
 export { showError } from "./show-error";
