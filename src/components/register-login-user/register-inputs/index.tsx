@@ -41,16 +41,16 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
   marginYItems,
   isRegister = true,
 }) => {
+  const spanStyle = {
+    color: "#d22d2d",
+  };
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<Inputs>();
-  const { getUser, data } = useUserContext();
-
-  const spanStyle = {
-    color: "#d22d2d",
-  };
+  const { getUser } = useUserContext();
 
   const loginName = isRegister ? "Register" : "Login";
   const [show, setShow] = useState(false);
@@ -134,7 +134,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
           </InputGroup>
           {errors.password && (
             <span style={spanStyle}>
-              Password field needs more than 6 characters!
+              Password field needs more than 8 characters!
             </span>
           )}
         </Box>

@@ -12,9 +12,7 @@
 }
 .boxRegister {
   width: 300px;
-}
-@media (min-width: 700px) {
-  .boxRegister {
+  @media (min-width: 700px) {
     width: 600px;
   }
 }
@@ -23,7 +21,7 @@
   font-size: 22px;
   text-align: center;
   justify-content: center;
-}
-.loginButton a {
-  color: #34aee7;
+  a {
+    color: #34aee7;
+  }
 }

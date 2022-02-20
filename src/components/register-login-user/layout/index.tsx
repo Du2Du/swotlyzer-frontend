@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import { RegisterInputs } from "../register-inputs";
-import style from "./Layout.module.css";
+import style from "./Layout.module.scss";
 
 /**
  *This component is used to register/login users in the system.
