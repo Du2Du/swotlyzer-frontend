@@ -17,7 +17,9 @@ export const LayoutCredentials: React.FC<{ isRegister: boolean }> = ({
 }) => {
   const titleName = isRegister ? "Register" : "Login";
   const linkName = !isRegister ? "Register" : "Login";
-  const messageName = isRegister ? "registration" : "login";
+  const messageName = isRegister
+    ? "Already have a registration? "
+    : "Don't have login? ";
 
   return (
     <Box className={style.registerBody}>
@@ -48,7 +50,7 @@ export const LayoutCredentials: React.FC<{ isRegister: boolean }> = ({
           borderColor="#b1b1b1"
           className={style.loginButton}
         >
-          Already have a {messageName}?{" "}
+          {messageName}
           <Link href={`/${linkName.toLowerCase()}`}>{linkName}</Link>
         </Box>
       </Box>
