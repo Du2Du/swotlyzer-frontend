@@ -9,7 +9,7 @@ interface CustomButtonProps extends ButtonProps {
   /**
    * This param sotre the label of the Button.
    */
-  label: string | number;
+  label?: string | number;
   /**
    * This param store the background-color of the Button.
    */

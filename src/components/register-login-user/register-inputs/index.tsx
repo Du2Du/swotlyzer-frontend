@@ -7,6 +7,7 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  Spinner,
 } from "@chakra-ui/react";
 import Router from "next/router";
 import React, { useState } from "react";
@@ -15,14 +16,13 @@ import toast from "react-hot-toast";
 import { ApiUrls } from "../../../ApiRoutes";
 import { useUserContext } from "../../../global-contexts";
 import { Backend } from "../../../services";
-import { CustomButton } from "../../helpers";
-import { showError } from "../../helpers/show-error";
+import { CustomButton, showError } from "../../helpers";
 
 interface RegisterInputsProps {
   /**
    * This parameter stores the number that will be used in the paddingY of the items of this component.
    */
-  paddingYItems?: number | string;
+  marginYItems?: number | string;
   isRegister: boolean;
 }
 
@@ -38,7 +38,7 @@ type Inputs = {
  * @author Du2Du
  */
 export const RegisterInputs: React.FC<RegisterInputsProps> = ({
-  paddingYItems,
+  marginYItems,
   isRegister = true,
 }) => {
   const {
@@ -54,10 +54,12 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
 
   const loginName = isRegister ? "Register" : "Login";
   const [show, setShow] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
   const hidePassword = () => setShow(!show);
 
   const submitRegister = (dataInputs: Inputs) => {
     const apiRoute = isRegister ? ApiUrls.REGISTER_USER : ApiUrls.LOGIN_USER;
+    setIsFetching(true);
     Backend.post(apiRoute, dataInputs)
       .then(() => {
         if (isRegister) {
@@ -68,14 +70,17 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
           getUser();
         }
       })
-      .catch(showError);
+      .catch(showError)
+      .finally(() => {
+        setIsFetching(false);
+      });
   };
 
   return (
     <Box d="flex" flexDir={"column"} bg="#fff">
       <form onSubmit={handleSubmit(submitRegister)}>
         {isRegister && (
-          <Box py={paddingYItems}>
+          <Box py={marginYItems}>
             <FormLabel htmlFor="name">Name</FormLabel>
             <Input
               type="text"
@@ -88,7 +93,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
             )}
           </Box>
         )}
-        <Box py={paddingYItems}>
+        <Box py={marginYItems}>
           <FormLabel htmlFor="email">E-mail</FormLabel>
           <Input
             {...register("email", { required: true })}
@@ -100,7 +105,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
             <span style={spanStyle}>E-mail field is required!</span>
           )}
         </Box>
-        <Box py={paddingYItems}>
+        <Box py={marginYItems}>
           <FormLabel htmlFor="password">Password</FormLabel>
           <InputGroup size="md">
             <Input
@@ -134,7 +139,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
           )}
         </Box>
         {isRegister && (
-          <Box py={paddingYItems}>
+          <Box py={marginYItems}>
             <FormLabel htmlFor="tel">Phone</FormLabel>
 
             <InputGroup>
@@ -155,11 +160,23 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
         )}
 
         <CustomButton
+          py={!isFetching ? 5 : 7}
           type="submit"
-          mt={paddingYItems}
-          label={loginName}
+          mt={marginYItems}
           width="full"
-        />
+        >
+          {!isFetching ? (
+            loginName
+          ) : (
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+            />
+          )}
+        </CustomButton>
       </form>
     </Box>
   );

@@ -1,5 +1,10 @@
-import React from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
-export const useLoading = () => {
-  return <div>Text</div>;
+export const useLoadingSpinner = (initialValue = false) => {
+  const [visibleSpinner, setVisibleSpinner] = useState(initialValue);
+
+  return {
+    visibleSpinner,
+    setVisibleSpinner,
+  };
 };
