@@ -1,1 +1,1 @@
-export { useLoadingSpinner } from "./loading";
+export { useLoadingSpinner } from "./loading/index";
