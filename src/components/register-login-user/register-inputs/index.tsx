@@ -143,10 +143,9 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
             <FormLabel htmlFor="tel">Phone</FormLabel>
 
             <InputGroup>
-              <InputLeftElement
-                pointerEvents="none"
-                children={<PhoneIcon color={"gray.300"} />}
-              />
+              <InputLeftElement pointerEvents="none">
+                <PhoneIcon color={"gray.300"} />
+              </InputLeftElement>
               <Input
                 type="tel"
                 {...register("phone", { required: true })}
@@ -166,7 +165,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
           width="full"
         >
           {!isFetching ? (
-            loginName
+            <>{loginName}</>
           ) : (
             <Spinner
               thickness="4px"
