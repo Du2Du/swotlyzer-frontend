@@ -1,5 +1,5 @@
 import React from "react";
-import { LayoutCredentials } from "../../components";
+import { LayoutCredentials } from "../../Components";
 
 /**
  *This component is used to login users in the system.

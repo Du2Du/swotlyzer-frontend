@@ -2,7 +2,7 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
-import { RegisterInputs } from "../register-inputs";
+import { RegisterInputs } from "../RegisterInputs";
 import style from "./Layout.module.scss";
 
 /**

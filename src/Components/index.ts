@@ -1,4 +1,4 @@
-export { RegisterInputs } from "./register-login-user/register-inputs/index";
-export { LayoutCredentials } from "./register-login-user/layout/index";
-export { CustomButton } from "./helpers/Button/index";
-export { showError } from "./helpers/Show-error/index";
+export { RegisterInputs } from "./RegisterLoginUser/RegisterInputs";
+export { LayoutCredentials } from "./RegisterLoginUser/Layout";
+export { CustomButton } from "./Helpers/Button";
+export { showError } from "./Helpers/Show-error";

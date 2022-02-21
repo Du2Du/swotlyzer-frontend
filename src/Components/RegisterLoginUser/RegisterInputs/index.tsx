@@ -13,10 +13,10 @@ import Router from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { CustomButton, showError } from "../../../Components";
 import { ApiUrls } from "../../../ApiRoutes";
-import { useUserContext } from "../../../global-contexts";
-import { Backend } from "../../../services";
-import { CustomButton, showError } from "../../../components";
+import { useUserContext } from "../../../GlobalContexts";
+import { Backend } from "../../../Services";
 
 interface RegisterInputsProps {
   /**
