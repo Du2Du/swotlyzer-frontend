@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext } from "react";
 import { ApiUrls } from "../../ApiRoutes";
 import { UserInterface } from "../../GlobalInterface/UserInterface";
-import { useGet } from "../../Services/Api";
+import { useGet } from "../../Hooks";
 
 interface UserContextInterface {
   data?: UserInterface;
