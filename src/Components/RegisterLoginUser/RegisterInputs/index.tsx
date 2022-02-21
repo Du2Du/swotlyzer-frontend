@@ -16,7 +16,7 @@ import toast from "react-hot-toast";
 import { CustomButton, showError } from "../../../Components";
 import { ApiUrls } from "../../../ApiRoutes";
 import { useUserContext } from "../../../GlobalContexts";
-import { Backend } from "../../../Services";
+import { Backend } from "../../../Services/Api";
 
 interface RegisterInputsProps {
   /**
