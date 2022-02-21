@@ -15,8 +15,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { CustomButton, showError } from "../../../Components";
 import { ApiUrls } from "../../../ApiRoutes";
-import { useUserContext } from "../../../GlobalContexts";
 import { Backend } from "../../../Services/Api";
+import { useUserContext } from "../../../GlobalContexts";
 
 interface RegisterInputsProps {
   /**
