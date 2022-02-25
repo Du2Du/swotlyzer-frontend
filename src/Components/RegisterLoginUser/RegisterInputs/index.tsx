@@ -18,6 +18,7 @@ import { ApiUrls } from "../../../ApiRoutes";
 import { Backend } from "../../../Services/Api";
 import { useUserContext } from "../../../GlobalContexts";
 import { showError } from "../../../Utils";
+import { RoutesName } from "../../../RoutesName";
 
 interface RegisterInputsProps {
   /**
@@ -65,7 +66,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
       .then(() => {
         if (isRegister) {
           toast.success("Successful Registration");
-          Router.push("/login");
+          Router.push(RoutesName.LOGIN);
         } else {
           toast.success("Successful Login");
           getUser();

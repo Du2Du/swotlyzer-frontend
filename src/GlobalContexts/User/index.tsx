@@ -9,7 +9,6 @@ import { ApiUrls } from "../../ApiRoutes";
 import { UserInterface } from "../../GlobalInterface/UserInterface";
 import { useGet } from "../../Hooks";
 import { RoutesName } from "../../RoutesName";
-import { Backend } from "../../Services/Api";
 
 interface UserContextInterface {
   userData?: UserInterface;
