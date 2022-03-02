@@ -1,7 +1,6 @@
 import { PhoneIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   FormLabel,
   Input,
   InputGroup,
@@ -13,7 +12,7 @@ import Router from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { CustomButton } from "../../../Components";
+import { Button } from "../../../Components";
 import { ApiUrls } from "../../../ApiRoutes";
 import { Backend } from "../../../Services/Api";
 import { useUserContext } from "../../../GlobalContexts";
@@ -160,7 +159,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
           </Box>
         )}
 
-        <CustomButton
+        <Button
           py={!isFetching ? 5 : 7}
           type="submit"
           mt={marginYItems}
@@ -177,7 +176,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
               size="xl"
             />
           )}
-        </CustomButton>
+        </Button>
       </form>
     </Box>
   );
