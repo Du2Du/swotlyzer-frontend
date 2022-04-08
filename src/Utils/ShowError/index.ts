@@ -8,7 +8,6 @@ import { toast } from "react-hot-toast";
  */
 export const showError = (errors: any) => {
   if (errors?.isCanceled || !errors) return;
-  console.log(errors.response);
 
   if (errors.response?.data?.message) {
     toast.error(errors.response?.data?.message);

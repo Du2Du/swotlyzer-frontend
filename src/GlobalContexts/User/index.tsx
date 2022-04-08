@@ -1,18 +1,17 @@
-import Router from "next/router";
 import React, {
   createContext,
+  PropsWithChildren,
   useCallback,
   useContext,
-  useEffect,
 } from "react";
 import { ApiUrls } from "../../ApiRoutes";
 import { UserInterface } from "../../GlobalInterface/UserInterface";
 import { useGet } from "../../Hooks";
-import { RoutesName } from "../../RoutesName";
 
 interface UserContextInterface {
   userData?: UserInterface;
   getUser: () => void;
+  isValidating: boolean;
 }
 
 const UserContext = createContext<UserContextInterface>(
@@ -20,18 +19,13 @@ const UserContext = createContext<UserContextInterface>(
 );
 
 export const UserProvider: React.FC = ({ children }) => {
-  const { data, mutate, error } = useGet<UserInterface>(ApiUrls.USER);
+  const { data, mutate, isValidating } = useGet<UserInterface>(ApiUrls.USER);
   const getUser = useCallback(() => {
     mutate();
   }, []);
 
-  useEffect(() => {
-    if (error?.response?.status === 401 && Router.locale === "/dashboard")
-      Router.push(RoutesName.REGISTER);
-  }, [error]);
-
   return (
-    <UserContext.Provider value={{ userData: data, getUser }}>
+    <UserContext.Provider value={{ userData: data, getUser, isValidating }}>
       {children}
     </UserContext.Provider>
   );
