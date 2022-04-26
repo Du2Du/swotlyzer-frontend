@@ -1,7 +1,6 @@
 import { PhoneIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   FormLabel,
   Input,
   InputGroup,
@@ -13,11 +12,12 @@ import Router from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { CustomButton } from "../../../Components";
+import { Button } from "../../../Components";
 import { ApiUrls } from "../../../ApiRoutes";
 import { Backend } from "../../../Services/Api";
 import { useUserContext } from "../../../GlobalContexts";
 import { showError } from "../../../Utils";
+import { RoutesName } from "../../../RoutesName";
 
 interface RegisterInputsProps {
   /**
@@ -65,7 +65,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
       .then(() => {
         if (isRegister) {
           toast.success("Successful Registration");
-          Router.push("/login");
+          Router.push(RoutesName.LOGIN);
         } else {
           toast.success("Successful Login");
           getUser();
@@ -159,7 +159,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
           </Box>
         )}
 
-        <CustomButton
+        <Button
           py={!isFetching ? 5 : 7}
           type="submit"
           mt={marginYItems}
@@ -176,7 +176,7 @@ export const RegisterInputs: React.FC<RegisterInputsProps> = ({
               size="xl"
             />
           )}
-        </CustomButton>
+        </Button>
       </form>
     </Box>
   );
