@@ -1,5 +1,4 @@
 .container {
   height: 100vh;
-  background-image: url("../Images/blueWave.jpg");
-  background-repeat: repeat;
+  background-color: #c1e8f7 !important;
 }

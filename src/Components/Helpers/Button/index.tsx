@@ -34,7 +34,8 @@ interface CustomButtonProps extends ButtonProps {
  *
  * @author Du2Du
  */
-export const CustomButton: React.FC<CustomButtonProps> = ({
+export const CustomButton = (
+ {
   label,
   children,
   textColor,
@@ -43,7 +44,8 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   border,
   onClick,
   ...rest
-}) => {
+ }: CustomButtonProps
+) => {
   return (
     <Button
       textColor={textColor ? textColor : "#34aee7"}

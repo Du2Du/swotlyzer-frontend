@@ -5,7 +5,7 @@ import React from "react";
 import { Button } from "../..";
 import { RoutesName } from "../../../RoutesName";
 
-export const NavigateHome: React.FC = () => {
+export const NavigateHome = () => {
   const genericLogo =
     "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg";
 

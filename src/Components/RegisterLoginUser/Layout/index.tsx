@@ -12,9 +12,13 @@ import style from "./Layout.module.scss";
  *
  * @author Du2Du
  */
-export const LayoutCredentials: React.FC<{ isRegister: boolean }> = ({
-  isRegister = false,
-}) => {
+export const LayoutCredentials = (
+  {
+    isRegister = false
+  }: {
+    isRegister: boolean
+  }
+) => {
   const titleName = isRegister ? "Register" : "Login";
   const linkName = !isRegister ? "Register" : "Login";
   const messageName = isRegister

@@ -38,10 +38,12 @@ type Inputs = {
  *
  * @author Du2Du
  */
-export const RegisterInputs: React.FC<RegisterInputsProps> = ({
-  marginYItems,
-  isRegister = true,
-}) => {
+export const RegisterInputs = (
+  {
+    marginYItems,
+    isRegister = true
+  }: RegisterInputsProps
+) => {
   const spanStyle = {
     color: "#d22d2d",
   };

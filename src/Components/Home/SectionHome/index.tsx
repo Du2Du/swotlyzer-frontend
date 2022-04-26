@@ -6,7 +6,7 @@ import { Button } from "../..";
 import { useWindowSize } from "../../../Hooks";
 import { RoutesName } from "../../../RoutesName";
 
-export const SectionHome: React.FC = () => {
+export const SectionHome = () => {
   const { width } = useWindowSize();
 
   const redirectDashboard = () => {
