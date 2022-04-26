@@ -13,10 +13,11 @@ export function WithAuth<T>(Component: React.ComponentType<T>) {
       switch (pathname) {
         case "/login":
         case "/register":
-          if (userData) Router.push("/");
+        case "/":
+          if (userData?._id) Router.push("/dashboard");
           break;
         default:
-          Router.push("/");
+          if (!userData?._id) Router.push("/login");
           break;
       }
     }, [isValidating, pathname, userData]);
