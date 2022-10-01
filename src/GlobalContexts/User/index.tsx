@@ -20,12 +20,11 @@ const UserContext = createContext<UserContextInterface>(
 
 export const UserProvider: React.FC = ({ children }) => {
   const { data, mutate, isValidating } = useGet<UserInterface>(ApiUrls.USER);
-  const getUser = useCallback(() => {
-    mutate();
-  }, []);
 
   return (
-    <UserContext.Provider value={{ userData: data, getUser, isValidating }}>
+    <UserContext.Provider
+      value={{ userData: data, getUser: mutate, isValidating }}
+    >
       {children}
     </UserContext.Provider>
   );

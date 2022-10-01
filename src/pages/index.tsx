@@ -2,10 +2,9 @@ import { Box } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { FooterHome, NavigateHome, SectionHome } from "../Components";
-import { WithAuth } from "../GlobalHOC";
 import styles from "../Styles/Home.module.css";
 
-const Home: NextPage = WithAuth(() => {
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -20,6 +19,6 @@ const Home: NextPage = WithAuth(() => {
       </Box>
     </div>
   );
-});
+};
 
 export default Home;
