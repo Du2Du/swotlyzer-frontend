@@ -25,7 +25,6 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = useState<UserInterface>();
   const router = useRouter();
   const getUser = useCallback(async () => {
-    console.log("LAKJDLKASJDKLASJKLDKLASDJKLASJDLKASD")
     return Backend.get<UserInterface>(ApiUrls.ME)
       .then((res) => {
         setUser(res.data);

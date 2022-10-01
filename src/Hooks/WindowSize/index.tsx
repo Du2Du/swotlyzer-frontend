@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export interface windowSizeInterface {
+export interface WindowSizeInterface {
   width: number | undefined;
   height: number | undefined;
 }
@@ -11,7 +11,7 @@ export interface windowSizeInterface {
  * @author Du2Du
  */
 export const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState<windowSizeInterface>({
+  const [windowSize, setWindowSize] = useState<WindowSizeInterface>({
     width: undefined,
     height: undefined,
   });

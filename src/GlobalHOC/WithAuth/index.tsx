@@ -8,7 +8,7 @@ export function WithAuth<T>(Component: React.ComponentType<T>) {
     useEffect(() => {
       if (!user) getUser();
     }, []);
-    return user ? <Component {...props} /> : <>LOADING</>;
+    return user ? <Component {...props as any} /> : <>LOADING</>;
   }
   return WrapperFunction;
 }
