@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Router from "next/router";
 import React from "react";
-import { Button } from "../..";
 import { RoutesName } from "../../../RoutesName";
+import { Button } from "../../Button";
 
 export const NavigateHome = () => {
   const genericLogo =
