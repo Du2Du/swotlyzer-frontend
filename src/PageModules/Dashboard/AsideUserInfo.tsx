@@ -42,14 +42,26 @@ export const AsideUserInfo: React.FC<AsideUserInfoProps> = ({}) => {
         </Center>
       </Center>
 
-      <Center flex={1} flexDirection="column" w="100%">
+      <Center flex={1} flexDirection="column" w="100%" gap={2}>
         <NextLink href={RoutesName.PROFILE} passHref>
-          <Button size="sm" w="100%" color="white" bg="blackAlpha.800" as="a">
+          <Button
+            size="sm"
+            w="100%"
+            variant="outline"
+            colorScheme="blackAlpha"
+            as="a"
+          >
             Profile
           </Button>
         </NextLink>
         <NextLink href={RoutesName.SWOT_ANALYS_FORM} passHref>
-          <Button size="sm" w="100%" color="white" bg="blackAlpha.800" as="a">
+          <Button
+            size="sm"
+            variant="outline"
+            w="100%"
+            colorScheme="blackAlpha"
+            as="a"
+          >
             New SWOT Diagram
           </Button>
         </NextLink>
@@ -60,8 +72,7 @@ export const AsideUserInfo: React.FC<AsideUserInfoProps> = ({}) => {
             alignSelf="flex-end"
             size="sm"
             w="100%"
-            color="white"
-            bg="red.400"
+            colorScheme="red"
             as="a"
           >
             Logout
@@ -78,16 +89,11 @@ export const AsideUserInfo: React.FC<AsideUserInfoProps> = ({}) => {
         top={15}
         left={15}
         display={["unset", "unset", "unset", "none"]}
-        colorScheme="white"
+        colorScheme="red"
         onClick={onOpen}
-        borderColor="white"
         shadow="lg"
-        opacity={0.5}
-        _hover={{
-          opacity: 1,
-        }}
       >
-        <HamburgerIcon color="red" boxSize={6} />
+        <HamburgerIcon color="white" boxSize={6} />
       </Button>
       <Box
         as="aside"
@@ -101,7 +107,7 @@ export const AsideUserInfo: React.FC<AsideUserInfoProps> = ({}) => {
         alignItems="center"
         justifyContent="space-between"
         flexDirection="column"
-        width={["20%","17%"]}
+        width={["20%", "17%"]}
         padding={4}
       >
         {content}
