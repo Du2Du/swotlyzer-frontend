@@ -27,7 +27,9 @@ const Dashboard: NextPage = () => {
           w="100%"
           flexDirection="row"
         >
-          <Text fontSize='3xl' color="white">Your Analysis</Text>
+          <Text fontSize="3xl" color="white">
+            Your Analysis
+          </Text>
           <Button
             colorScheme="red"
             bg="red"
@@ -38,10 +40,10 @@ const Dashboard: NextPage = () => {
         </Box>
         <Grid
           as="main"
-          h="200vh"
           w="100%"
           gap={4}
-          gridTemplateRows={"repeat(auto-fill, 325px)"}
+          paddingBottom={10}
+          gridAutoRows="minmax(350px, auto)"
           gridTemplateColumns={[
             "repeat(1, 1fr)",
             "repeat(2, 1fr)",
@@ -56,6 +58,9 @@ const Dashboard: NextPage = () => {
           <SwotCard index={1} {...swotAnalysisMock} />
           <SwotCard index={2} {...swotAnalysisMock} />
           <SwotCard index={0} {...swotAnalysisMock} />
+          <SwotCard index={2} {...swotAnalysisMock} />
+          <SwotCard index={2} {...swotAnalysisMock} />
+          <SwotCard index={2} {...swotAnalysisMock} />
           <SwotCard index={2} {...swotAnalysisMock} />
         </Grid>
       </Box>

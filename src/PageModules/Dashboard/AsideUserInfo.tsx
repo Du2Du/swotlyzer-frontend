@@ -83,18 +83,18 @@ export const AsideUserInfo: React.FC<AsideUserInfoProps> = ({}) => {
   );
   return (
     <>
-      <Button
-        zIndex={100}
-        position="fixed"
-        top={15}
-        left={15}
-        display={["unset", "unset", "unset", "none"]}
-        colorScheme="red"
+      <HamburgerIcon
         onClick={onOpen}
         shadow="lg"
-      >
-        <HamburgerIcon color="white" boxSize={6} />
-      </Button>
+        color="white"
+        boxSize={10}
+        display={["unset", "unset", "unset", "none"]}
+        zIndex={100}
+        position="fixed"
+        cursor="pointer"
+        top={15}
+        left={15}
+      />
       <Box
         as="aside"
         bg="whiteAlpha.900"
