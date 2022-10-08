@@ -6,5 +6,6 @@ export const RoutesName = {
   CONTACT: "/contact",
   ABOUT: "/about",
   LOGOUT: "/logout",
-  SWOT_ANALYS_FORM: "/swot-analysis",
+  SWOT_ANALYS_FORM: "/swot",
+  
 };
