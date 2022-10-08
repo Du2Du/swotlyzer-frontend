@@ -15,13 +15,19 @@ export interface SwotField {
   color: string;
 }
 
+export interface SwotArea {
+  bgColor: string;
+  fields: Array<SwotField>;
+  title: string;
+}
+
 export interface SwotAnalysis {
   _id: string;
   title: string;
   swotTemplate: boolean;
   swotLayoutType: SwotLayoutTypes;
-  strengths: Array<SwotField>;
-  weaknesses: Array<SwotField>;
-  opportunities: Array<SwotField>;
-  threats: Array<SwotField>;
+  strengths: SwotArea;
+  weaknesses: SwotArea;
+  opportunities: SwotArea;
+  threats: SwotArea;
 }
