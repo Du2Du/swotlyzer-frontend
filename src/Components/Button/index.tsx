@@ -42,8 +42,6 @@ export const Button = (
 ) => {
   return (
     <ChakraButton
-      textColor={textColor ? textColor : "#34aee7"}
-      bg={bg ? bg : "#fff"}
       onClick={onClick}
       borderRadius={borderRadius ? borderRadius : "full"}
       border={border ? border : "1px"}
