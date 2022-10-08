@@ -1,30 +1,42 @@
+import { AxiosResponse } from "axios";
+import { useRouter } from "next/router";
 import React, {
-  createContext,
-  PropsWithChildren,
-  useCallback,
-  useContext,
+  createContext, useCallback,
+  useContext, useState
 } from "react";
 import { ApiUrls } from "../../ApiRoutes";
 import { UserInterface } from "../../GlobalInterface/UserInterface";
-import { useGet } from "../../Hooks";
+import { Backend } from "../../Services/Api";
 
 interface UserContextInterface {
-  userData?: UserInterface;
-  getUser: () => void;
-  isValidating: boolean;
+  user?: UserInterface;
+  getUser: () => Promise<void | AxiosResponse<UserInterface, any>>;
 }
 
 const UserContext = createContext<UserContextInterface>(
   {} as UserContextInterface
 );
 
-export const UserProvider: React.FC = ({ children }) => {
-  const { data, mutate, isValidating } = useGet<UserInterface>(ApiUrls.USER);
+interface UserProviderProps {
+  children: React.ReactNode;
+}
+
+export const UserProvider = ({ children }: UserProviderProps) => {
+  const [user, setUser] = useState<UserInterface>();
+  const router = useRouter();
+  const getUser = useCallback(async () => {
+    return Backend.get<UserInterface>(ApiUrls.ME)
+      .then((res) => {
+        setUser(res.data);
+        return res;
+      })
+      .catch(() => {
+        router.push("/register");
+      });
+  }, []);
 
   return (
-    <UserContext.Provider
-      value={{ userData: data, getUser: mutate, isValidating }}
-    >
+    <UserContext.Provider value={{ user, getUser }}>
       {children}
     </UserContext.Provider>
   );

@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "@chakra-ui/react";
+import { Button as ChakraButton, ButtonProps } from "@chakra-ui/react";
 import React from "react";
 
 interface CustomButtonProps extends ButtonProps {
@@ -10,10 +10,7 @@ interface CustomButtonProps extends ButtonProps {
    * This param sotre the label of the Button.
    */
   label?: string | number;
-  /**
-   * This param store the background-color of the Button.
-   */
-  bg?: string;
+
   /**
    * This param store the borderRadius of the Button.
    */
@@ -22,10 +19,7 @@ interface CustomButtonProps extends ButtonProps {
    * This param store the border of the Button.
    */
   border?: string;
-  /**
-   * This param store the onClick of the Button.
-   */
-  onClick?: (param: any) => void;
+
 }
 
 /**
@@ -34,7 +28,8 @@ interface CustomButtonProps extends ButtonProps {
  *
  * @author Du2Du
  */
-export const CustomButton: React.FC<CustomButtonProps> = ({
+export const Button = (
+ {
   label,
   children,
   textColor,
@@ -43,9 +38,10 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   border,
   onClick,
   ...rest
-}) => {
+ }: CustomButtonProps
+) => {
   return (
-    <Button
+    <ChakraButton
       textColor={textColor ? textColor : "#34aee7"}
       bg={bg ? bg : "#fff"}
       onClick={onClick}
@@ -55,6 +51,6 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
     >
       {label}
       {children}
-    </Button>
+    </ChakraButton>
   );
 };

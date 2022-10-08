@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Router from "next/router";
 import React from "react";
-import { Button } from "../..";
 import { RoutesName } from "../../../RoutesName";
+import { Button } from "../../Button";
 
-export const NavigateHome: React.FC = () => {
+export const NavigateHome = () => {
   const genericLogo =
     "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg";
 
