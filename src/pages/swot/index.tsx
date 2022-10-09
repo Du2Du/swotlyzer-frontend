@@ -2,50 +2,14 @@ import { Flex, Grid } from "@chakra-ui/react";
 import { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
 import {
-  DragDropContext,
-  DraggableLocation,
-  DropResult,
+  DragDropContext, DropResult,
   resetServerContext,
   ResponderProvided
 } from "react-beautiful-dnd";
 import { SEO } from "../../Components";
-import type { SwotField } from "../../GlobalInterface/Swot";
 import { swotAnalysisMock } from "../../Mocks";
 import { SwotDroppableArea } from "../../PageModules";
-
-const reorder = (
-  list: Array<SwotField>,
-  startIndex: number,
-  endIndex: number
-) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
-
-/**
- * Moves an item from one list to another list.
- */
-const move = (
-  source: Array<SwotField>,
-  destination: Array<SwotField>,
-  droppableSource: DraggableLocation,
-  droppableDestination: DraggableLocation
-) => {
-  const sourceClone = Array.from(source);
-  const destClone = Array.from(destination);
-  const [removed] = sourceClone.splice(droppableSource.index, 1);
-
-  destClone.splice(droppableDestination.index, 0, removed);
-
-  const result: { [x: string]: Array<SwotField> } = {};
-  result[droppableSource.droppableId] = sourceClone;
-  result[droppableDestination.droppableId] = destClone;
-
-  return result;
-};
+import { move, reorder } from "./utils";
 
 type SwotAreasNames = "strengths" | "weaknesses" | "opportunities" | "threats";
 
@@ -110,7 +74,7 @@ const Swot: NextPage = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  resetServerContext(); // <-- CALL RESET SERVER CONTEXT, SERVER SIDE
+  resetServerContext(); // I need to call this to avoid errors when using Drag and drop features
 
   return { props: {} };
 };
