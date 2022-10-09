@@ -12,9 +12,10 @@ export const SEO: React.FC<PropsWithChildren<SEOProps>> = ({
   iconHref = "/favicon.ico",
   title,
 }) => {
+  const titleMsg = `Swotlyzer ${title ? "- " + title : ""}`;
   return (
     <Head>
-      <title>Swotlyzer {`${title ? "- " + title : ""}`}</title>
+      <title>{titleMsg}</title>
       <meta name="description" content={content} />
       <link rel="icon" href={iconHref} />
       {children}
