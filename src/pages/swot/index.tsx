@@ -2,13 +2,14 @@ import { Flex, Grid } from "@chakra-ui/react";
 import { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
 import {
-  DragDropContext, DropResult,
+  DragDropContext,
+  DropResult,
   resetServerContext,
-  ResponderProvided
+  ResponderProvided,
 } from "react-beautiful-dnd";
 import { SEO } from "../../Components";
 import { swotAnalysisMock } from "../../Mocks";
-import { SwotDroppableArea } from "../../PageModules";
+import { SwotActions, SwotDroppableArea } from "../../PageModules";
 import { move, reorder } from "./utils";
 
 type SwotAreasNames = "strengths" | "weaknesses" | "opportunities" | "threats";
@@ -49,8 +50,14 @@ const Swot: NextPage = () => {
   };
 
   return (
-    <Flex minH={["1000px", "100vh"]} bg="blackAlpha.800" minW="100vw">
+    <Flex
+      minH={["1000px", "100vh"]}
+      position="relative"
+      bg="blackAlpha.800"
+      minW="100vw"
+    >
       <SEO />
+      <SwotActions />
       <Grid
         alignItems="center"
         justifyContent="center"
