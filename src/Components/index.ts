@@ -5,4 +5,6 @@ export { NavigateHome } from "./Home/NavigateHome";
 export { SectionHome } from "./Home/SectionHome";
 export { FooterHome } from "./Home/FooterHome";
 export * from "./SwotCard";
-export * from './SEO';
+export * from "./SEO";
+export * from "./Input";
+export * from "./Modal";
