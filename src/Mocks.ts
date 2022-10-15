@@ -12,7 +12,7 @@ export const swotAnalysisMock: SwotAnalysis = {
       {
         _id: "op1",
         color: "#fff",
-        fontFamily: "sans serify",
+        fontFamily: "sans targetLocationy",
         fontSize: 15,
         fontWeight: "bold",
         text: "op1",
@@ -20,7 +20,7 @@ export const swotAnalysisMock: SwotAnalysis = {
       {
         _id: "op2 123123123123axdasdasd",
         color: "#fff",
-        fontFamily: "sans serify",
+        fontFamily: "sans targetLocationy",
         fontSize: 15,
         fontWeight: "bold",
         text: "op2 123123123123axdasdasd",
@@ -34,7 +34,7 @@ export const swotAnalysisMock: SwotAnalysis = {
       {
         _id: "1__fsdf23423423",
         color: "#fff",
-        fontFamily: "sans serify",
+        fontFamily: "sans targetLocationy",
         fontSize: 15,
         fontWeight: "bold",
         text: "WEAK 1",
@@ -42,7 +42,7 @@ export const swotAnalysisMock: SwotAnalysis = {
       {
         _id: "1__fsdf2342453423",
         color: "#fff",
-        fontFamily: "sans serify",
+        fontFamily: "sans targetLocationy",
         fontSize: 15,
         fontWeight: "bold",
         text: "WEAK 2",
@@ -56,7 +56,7 @@ export const swotAnalysisMock: SwotAnalysis = {
       {
         _id: "xxxxxxxqsdqsdqd24521231231233123***fsdf23423423",
         color: "#fff",
-        fontFamily: "sans serify",
+        fontFamily: "sans targetLocationy",
         fontSize: 15,
         fontWeight: "bold",
         text: "str 1",
@@ -64,7 +64,7 @@ export const swotAnalysisMock: SwotAnalysis = {
       {
         _id: "1__123344*&**345435fsdf2342453423",
         color: "#fff",
-        fontFamily: "sans serify",
+        fontFamily: "sans targetLocationy",
         fontSize: 15,
         fontWeight: "bold",
         text: "str 2",
@@ -78,7 +78,7 @@ export const swotAnalysisMock: SwotAnalysis = {
       {
         _id: "00002323123***fsdf23423423",
         color: "#fff",
-        fontFamily: "sans serify",
+        fontFamily: "sans targetLocationy",
         fontSize: 15,
         fontWeight: "bold",
         text: "THREAT 1",
@@ -86,7 +86,7 @@ export const swotAnalysisMock: SwotAnalysis = {
       {
         _id: "1_00002323_99f2342453423",
         color: "#fff",
-        fontFamily: "sans serify",
+        fontFamily: "sans targetLocationy",
         fontSize: 15,
         fontWeight: "bold",
         text: "THREAT 2",
