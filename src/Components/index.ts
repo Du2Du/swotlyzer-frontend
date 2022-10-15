@@ -8,3 +8,4 @@ export * from "./SwotCard";
 export * from "./SEO";
 export * from "./Input";
 export * from "./Modal";
+export * from "./Select";

@@ -12,6 +12,7 @@ export interface SwotField {
   fontSize: number | string;
   fontFamily: string;
   fontWeight: string;
+  fontStyle: string;
   color: string;
 }
 

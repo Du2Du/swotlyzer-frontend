@@ -13,5 +13,6 @@ interface SwotDraggableItemProps {
 export const SwotDraggableItem: React.FC<SwotDraggableItemProps> = ({
   item: { text, _id, ...rest },
 }) => {
+  console.log(rest)
   return <Text {...rest}>{text}</Text>;
 };
