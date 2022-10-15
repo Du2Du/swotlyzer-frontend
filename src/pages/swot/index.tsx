@@ -8,6 +8,7 @@ import {
   ResponderProvided,
 } from "react-beautiful-dnd";
 import { SEO } from "../../Components";
+import type { SwotAnalysis } from "../../GlobalInterface/Swot";
 import { swotAnalysisMock } from "../../Mocks";
 import { SwotActions, SwotDroppableArea } from "../../PageModules";
 import { SwotContextProvider } from "./Context";
@@ -16,7 +17,7 @@ import { move, reorder } from "./utils";
 type SwotAreasNames = "strengths" | "weaknesses" | "opportunities" | "threats";
 
 const Swot: NextPage = () => {
-  const [swot, setSwot] = useState(swotAnalysisMock);
+  const [swot, setSwot] = useState<SwotAnalysis | undefined>(swotAnalysisMock);
   const onDragEnd = useCallback(
     (result: DropResult, _provided: ResponderProvided) => {
       const { source, destination } = result;
@@ -29,9 +30,9 @@ const Swot: NextPage = () => {
         source.droppableId as SwotAreasNames;
       const targetLocation: SwotAreasNames =
         destination.droppableId as SwotAreasNames;
-      console.log(startLocation, targetLocation);
       if (startLocation === targetLocation) {
         setSwot((past) => {
+          if (!past) return past;
           const newValue = { ...past };
           const items = reorder(
             newValue[startLocation].fields,
@@ -40,11 +41,12 @@ const Swot: NextPage = () => {
           );
           return {
             ...past,
-            [startLocation]: { ...past[startLocation], fields: items },
+            [startLocation]: { ...past![startLocation], fields: items },
           };
         });
       } else {
         setSwot((past) => {
+          if (!past) return past;
           const newState = { ...past };
           const result = move(
             newState[startLocation].fields,
@@ -69,7 +71,7 @@ const Swot: NextPage = () => {
       minW="100vw"
     >
       <SEO />
-      <SwotContextProvider swot={swot}>
+      <SwotContextProvider setSwot={setSwot} swot={swot}>
         <SwotActions />
         <Grid
           alignItems="center"
@@ -80,16 +82,23 @@ const Swot: NextPage = () => {
           gridTemplateRows={"1fr 1fr"}
         >
           <DragDropContext onDragEnd={onDragEnd}>
-            <SwotDroppableArea droppableId="strengths" item={swot.strengths} />
-            <SwotDroppableArea
-              droppableId="weaknesses"
-              item={swot.weaknesses}
-            />
-            <SwotDroppableArea
-              droppableId="opportunities"
-              item={swot.opportunities}
-            />
-            <SwotDroppableArea droppableId="threats" item={swot.threats} />
+            {swot && (
+              <>
+                <SwotDroppableArea
+                  droppableId="strengths"
+                  item={swot.strengths}
+                />
+                <SwotDroppableArea
+                  droppableId="weaknesses"
+                  item={swot.weaknesses}
+                />
+                <SwotDroppableArea
+                  droppableId="opportunities"
+                  item={swot.opportunities}
+                />
+                <SwotDroppableArea droppableId="threats" item={swot.threats} />
+              </>
+            )}
           </DragDropContext>
         </Grid>
       </SwotContextProvider>
