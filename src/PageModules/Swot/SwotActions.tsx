@@ -1,62 +1,74 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Box, Flex, useBoolean } from "@chakra-ui/react";
-import React from "react";
+import { AddIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Flex,
+  Input,
+  Stack,
+  useBoolean,
+  useDisclosure,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
 
 interface SwotActionsProps {}
-
-
 
 /**
  *
  * @author andr30z
  **/
 export const SwotActions: React.FC<SwotActionsProps> = () => {
-  const [isOpen, { toggle }] = useBoolean(false);
-  const Icon = isOpen ? ChevronRightIcon : ChevronLeftIcon;
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [testState, setTestState] = useState("");
+  const handleChange = (event: any) => setTestState(event.target.value);
 
   return (
-    <>
-      <Flex
-        position="fixed"
-        h={["800px", "100vh"]}
-        right={isOpen ? 0 : "-25%"}
-        as="aside"
-        alignItems="center"
-        justify="center"
-        width={["30%"]}
-        transition="right .5s"
-      >
-        <Box
-          borderLeftRadius={15}
-          w="100%"
-          h="80%"
-          bg="whiteAlpha.900"
-          paddingX={5}
-          paddingY={3}
-          shadow="xl"
-          position="relative"
-        >
-          <Icon
-            onClick={toggle}
-            bgSize={15}
-            boxSize={10}
-            left={"-20px"}
-            position="absolute"
-            userSelect="none"
-            top="50%"
-            bg="white"
-            shadow="lg"
-            cursor="pointer"
-            borderRadius="50%"
-            _hover={{
-              bg: "black",
-              color: "white",
-              transition: "background-color .4s",
-            }}
-          />
-          test
-        </Box>
+    <Flex position="fixed" bottom={25} width={"100vw"}>
+      <Flex align="center" justify="center" width={"100%"}>
+        <AddIcon
+          onClick={onOpen}
+          bgSize={15}
+          boxSize={10}
+          userSelect="none"
+          color="blackAlpha.500"
+          cursor="pointer"
+          background="whiteAlpha.300"
+          borderRadius="50%"
+          opacity={0.8}
+          _hover={{
+            opacity: 1,
+            bg: "blackAlpha.500",
+            color: "white",
+            transition: "background-color .4s",
+          }}
+        />
       </Flex>
-    </>
+      <Drawer placement="bottom" onClose={onClose} isOpen={isOpen} size="xl">
+        <DrawerOverlay />
+        <DrawerContent height={["70%", "50%"]}>
+          <DrawerCloseButton />
+          <DrawerHeader>Actions</DrawerHeader>
+          <DrawerBody>
+            <Stack as="section" spacing={3}>
+              <Input
+                value={testState}
+                onChange={handleChange}
+                placeholder="large size"
+                size="lg"
+              />
+              <Input placeholder="large size" size="lg" />
+              <Input placeholder="large size" size="lg" />
+              <Input placeholder="large size" size="lg" />
+              <Input placeholder="large size" size="lg" />
+            </Stack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </Flex>
   );
 };
