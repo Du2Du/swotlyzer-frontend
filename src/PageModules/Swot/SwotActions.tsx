@@ -1,6 +1,6 @@
-import { AddIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { ChevronUpIcon } from "@chakra-ui/icons";
 import {
-  Box,
+  Center,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -8,12 +8,11 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
-  Input,
   Stack,
-  useBoolean,
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import Input from "../../Components/Input";
 
 interface SwotActionsProps {}
 
@@ -23,14 +22,13 @@ interface SwotActionsProps {}
  **/
 export const SwotActions: React.FC<SwotActionsProps> = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const [testState, setTestState] = useState("");
   const handleChange = (event: any) => setTestState(event.target.value);
 
   return (
     <Flex position="fixed" bottom={25} width={"100vw"}>
-      <Flex align="center" justify="center" width={"100%"}>
-        <AddIcon
+      <Center width={"100%"}>
+        <ChevronUpIcon
           onClick={onOpen}
           bgSize={15}
           boxSize={10}
@@ -47,7 +45,7 @@ export const SwotActions: React.FC<SwotActionsProps> = () => {
             transition: "background-color .4s",
           }}
         />
-      </Flex>
+      </Center>
       <Drawer placement="bottom" onClose={onClose} isOpen={isOpen} size="xl">
         <DrawerOverlay />
         <DrawerContent height={["70%", "50%"]}>
@@ -61,10 +59,6 @@ export const SwotActions: React.FC<SwotActionsProps> = () => {
                 placeholder="large size"
                 size="lg"
               />
-              <Input placeholder="large size" size="lg" />
-              <Input placeholder="large size" size="lg" />
-              <Input placeholder="large size" size="lg" />
-              <Input placeholder="large size" size="lg" />
             </Stack>
           </DrawerBody>
         </DrawerContent>
