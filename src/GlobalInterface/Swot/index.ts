@@ -9,7 +9,7 @@ export const SwotLayoutDictionary = {
 export interface SwotField {
   _id: string;
   text: string;
-  fontSize: number;
+  fontSize: number | string;
   fontFamily: string;
   fontWeight: string;
   color: string;
@@ -20,6 +20,12 @@ export interface SwotArea {
   fields: Array<SwotField>;
   title: string;
 }
+
+export type SwotAreaKeys =
+  | "strengths"
+  | "weaknesses"
+  | "opportunities"
+  | "threats";
 
 export interface SwotAnalysis {
   _id: string;
