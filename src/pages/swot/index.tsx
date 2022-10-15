@@ -1,6 +1,6 @@
 import { Flex, Grid } from "@chakra-ui/react";
 import { GetServerSideProps, NextPage } from "next";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
   DragDropContext,
   DropResult,
@@ -10,44 +10,56 @@ import {
 import { SEO } from "../../Components";
 import { swotAnalysisMock } from "../../Mocks";
 import { SwotActions, SwotDroppableArea } from "../../PageModules";
+import { SwotContextProvider } from "./Context";
 import { move, reorder } from "./utils";
 
 type SwotAreasNames = "strengths" | "weaknesses" | "opportunities" | "threats";
 
 const Swot: NextPage = () => {
   const [swot, setSwot] = useState(swotAnalysisMock);
-  const onDragEnd = (result: DropResult, _provided: ResponderProvided) => {
-    const { source, destination } = result;
+  const onDragEnd = useCallback(
+    (result: DropResult, _provided: ResponderProvided) => {
+      const { source, destination } = result;
 
-    // dropped outside the list
-    if (!destination) {
-      return;
-    }
-    const sInd: SwotAreasNames = source.droppableId as SwotAreasNames;
-    const dInd: SwotAreasNames = destination.droppableId as SwotAreasNames;
-
-    if (sInd === dInd) {
-      const items = reorder(swot[sInd].fields, source.index, destination.index);
-      setSwot((past) => ({
-        ...past,
-        [sInd]: { ...past[sInd], fields: items },
-      }));
-    } else {
-      const result = move(
-        swot[sInd].fields,
-        swot[dInd].fields,
-        source,
-        destination
-      );
-      setSwot((past) => {
-        const newState = { ...past };
-        newState[sInd].fields = result[sInd];
-        newState[dInd].fields = result[dInd];
-
-        return newState;
-      });
-    }
-  };
+      // dropped outside the list
+      if (!destination) {
+        return;
+      }
+      const startLocation: SwotAreasNames =
+        source.droppableId as SwotAreasNames;
+      const targetLocation: SwotAreasNames =
+        destination.droppableId as SwotAreasNames;
+      console.log(startLocation, targetLocation);
+      if (startLocation === targetLocation) {
+        setSwot((past) => {
+          const newValue = { ...past };
+          const items = reorder(
+            newValue[startLocation].fields,
+            source.index,
+            destination.index
+          );
+          return {
+            ...past,
+            [startLocation]: { ...past[startLocation], fields: items },
+          };
+        });
+      } else {
+        setSwot((past) => {
+          const newState = { ...past };
+          const result = move(
+            newState[startLocation].fields,
+            newState[targetLocation].fields,
+            source,
+            destination
+          );
+          newState[startLocation].fields = result[startLocation];
+          newState[targetLocation].fields = result[targetLocation];
+          return newState;
+        });
+      }
+    },
+    []
+  );
 
   return (
     <Flex
@@ -57,25 +69,30 @@ const Swot: NextPage = () => {
       minW="100vw"
     >
       <SEO />
-      <SwotActions />
-      <Grid
-        alignItems="center"
-        justifyContent="center"
-        as="main"
-        flex={1}
-        gridTemplateColumns={"1fr 1fr"}
-        gridTemplateRows={"1fr 1fr"}
-      >
-        <DragDropContext onDragEnd={onDragEnd}>
-          <SwotDroppableArea droppableId="strengths" item={swot.strengths} />
-          <SwotDroppableArea droppableId="weaknesses" item={swot.weaknesses} />
-          <SwotDroppableArea
-            droppableId="opportunities"
-            item={swot.opportunities}
-          />
-          <SwotDroppableArea droppableId="threats" item={swot.threats} />
-        </DragDropContext>
-      </Grid>
+      <SwotContextProvider swot={swot}>
+        <SwotActions />
+        <Grid
+          alignItems="center"
+          justifyContent="center"
+          as="main"
+          flex={1}
+          gridTemplateColumns={"1fr 1fr"}
+          gridTemplateRows={"1fr 1fr"}
+        >
+          <DragDropContext onDragEnd={onDragEnd}>
+            <SwotDroppableArea droppableId="strengths" item={swot.strengths} />
+            <SwotDroppableArea
+              droppableId="weaknesses"
+              item={swot.weaknesses}
+            />
+            <SwotDroppableArea
+              droppableId="opportunities"
+              item={swot.opportunities}
+            />
+            <SwotDroppableArea droppableId="threats" item={swot.threats} />
+          </DragDropContext>
+        </Grid>
+      </SwotContextProvider>
     </Flex>
   );
 };
