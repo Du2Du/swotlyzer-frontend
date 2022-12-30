@@ -82,23 +82,22 @@ export const SwotDroppableArea: React.FC<SwotDroppableAreaProps> = ({
                 roundedRight="3xl"
                 bg="white"
                 paddingRight="10px"
-                children={
-                  <>
-                    <CheckIcon
-                      marginRight="10px"
-                      boxSize={5}
-                      color="green.500"
-                      cursor="pointer"
-                    />
-                    <CloseIcon
-                      onClick={onCloseTitleInput}
-                      boxSize={4}
-                      cursor="pointer"
-                      color="red"
-                    />
-                  </>
-                }
-              />
+              >
+                <>
+                  <CheckIcon
+                    marginRight="10px"
+                    boxSize={5}
+                    color="green.500"
+                    cursor="pointer"
+                  />
+                  <CloseIcon
+                    onClick={onCloseTitleInput}
+                    boxSize={4}
+                    cursor="pointer"
+                    color="red"
+                  />
+                </>
+              </InputRightElement>
             </Input>
           ) : (
             <>

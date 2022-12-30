@@ -38,12 +38,10 @@ type Inputs = {
  *
  * @author Du2Du
  */
-export const RegisterInputs = (
-  {
-    marginYItems,
-    isRegister = true
-  }: RegisterInputsProps
-) => {
+export const RegisterInputs = ({
+  marginYItems,
+  isRegister = true,
+}: RegisterInputsProps) => {
   const spanStyle = {
     color: "#d22d2d",
   };
@@ -80,7 +78,7 @@ export const RegisterInputs = (
   };
 
   return (
-    <Box d="flex" flexDir={"column"} bg="#fff">
+    <Box display="flex" flexDir={"column"}>
       <form onSubmit={handleSubmit(submitRegister)}>
         {isRegister && (
           <Box py={marginYItems}>
