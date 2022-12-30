@@ -7,15 +7,15 @@ import {
   TextProps,
   useBoolean,
   useDisclosure,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { ColorChangeHandler, SketchPicker } from "react-color";
 import { Button, Select } from "../../Components";
 import Input from "../../Components/Input";
 import Modal from "../../Components/Modal";
+import { useSwotContext } from "../../GlobalContexts";
 import type { SwotAreaKeys, SwotField } from "../../GlobalInterface/Swot";
-import { useSwotContext } from "../../pages/swot/Context";
 
 type SelectOpts = Omit<SwotField, "text" | "color" | "_id">;
 const fontFamilies: { [x: string]: SelectOpts } = {
