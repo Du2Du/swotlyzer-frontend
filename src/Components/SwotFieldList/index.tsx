@@ -1,13 +1,19 @@
 import { Box, Text } from "@chakra-ui/react";
 import React from "react";
-import { SwotAnalysis, SwotField } from "../../GlobalInterface/Swot";
+import { SwotAnalysis, SwotArea } from "../../GlobalInterface/Swot";
 
-const PrintSwotField: React.FC<{ list: Array<SwotField> }> = ({ list }) => {
+const PrintSwotField: React.FC<{ list: SwotArea }> = ({ list }) => {
   return (
-    <Box display="flex" overflow="hidden" flex={1} flexDirection={"column"} alignItems="baseline">
-      {list.map((item, index) => (
+    <Box
+      display="flex"
+      overflow="hidden"
+      flex={1}
+      flexDirection={"column"}
+      alignItems="baseline"
+    >
+      {list.fields.map((item, index) => (
         <Box width="100%" maxWidth={330 / 2} key={item._id + "-" + index}>
-          <Text textAlign="start"  noOfLines={1}>
+          <Text textAlign="start" noOfLines={1}>
             {item.text}
           </Text>
         </Box>
