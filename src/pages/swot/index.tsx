@@ -8,11 +8,11 @@ import {
   ResponderProvided,
 } from "react-beautiful-dnd";
 import { SEO } from "../../Components";
+import { SwotContextProvider } from "../../GlobalContexts";
 import type { SwotAnalysis } from "../../GlobalInterface/Swot";
 import { swotAnalysisMock } from "../../Mocks";
 import { SwotActions, SwotDroppableArea } from "../../PageModules";
-import { SwotContextProvider } from "./Context";
-import { move, reorder } from "./utils";
+import { move, reorder } from "../../Utils";
 
 type SwotAreasNames = "strengths" | "weaknesses" | "opportunities" | "threats";
 
